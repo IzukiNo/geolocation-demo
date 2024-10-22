@@ -1,12 +1,11 @@
-function errorgeo(err) {
+function errorgeo(err) { //Báo lỗi khi có lỗi
     var errcode = err.code;
     var message = err.message;
     var boxhtml = document.getElementById("toado");
-    boxhtml.innerHTML = "Error: " + errcode + "<br>" + "Reason: " + message;
-
+    boxhtml.innerHTML = "Error: " + errcode + "<br>" + "Reason: " + message; //Hiện thông báo lỗi
 }
 
-function showcoor(pos) {
+function showcoord(pos) { //Thông bão vĩ độ, kinh độ
     var coord = pos.coords;
     var long = coord.longitude;
     var lat  = coord.latitude;
