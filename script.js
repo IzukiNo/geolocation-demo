@@ -10,6 +10,11 @@ function showcoor(pos) {
     var coord = pos.coords;
     var long = coord.longitude;
     var lat  = coord.latitude;
-    var boxhtml = document.getElementById("BoxShow");
-    boxhtml.innerHTML = "Vị trí hiện tại của bạn:"+"<br>"+ "Kinh độ: " + long + "<br>" + "Vĩ độ: " + lat;
+    const geoApiUrl=`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=vi`
+    fetch(geoApiUrl)
+    .then(res => res.json())
+    .then(data => {
+        var boxhtml = document.getElementById("BoxShow");
+        boxhtml.innerHTML = "Vị trí hiện tại của bạn:"+"<br>"+data.principalSubdivision+", "+data.locality+", "+data.countryName+"<br>"+"<br>"+ "Kinh độ: " + long + "<br>" + "Vĩ độ: " + lat;
+    })
 }
